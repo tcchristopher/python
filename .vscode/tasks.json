@@ -1,0 +1,85 @@
+{
+    // ============================================================
+    // Thabiso's Python workspace tasks
+    // macOS · Apple Silicon · VENV-READY
+    //
+    // Python is interpreted, so there is no "build" step like clang++.
+    // Run any task with: Terminal > Run Task...
+    //
+    // These tasks call:  ${workspaceFolder}/.venv/bin/python
+    // That path exists ONLY after you create the venv (see the
+    // "Create venv" task below, or settings.json header). Before then,
+    // use plain `python3` in the terminal, or just run the
+    // "Create venv" task first.
+    // ============================================================
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // ONE-TIME per project. Creates the .venv folder and upgrades
+            // pip inside it. After this, reload the window so VS Code
+            // picks up the new interpreter. You never run this twice.
+            "label": "Create venv",
+            "type": "shell",
+            "command": "python3 -m venv .venv && .venv/bin/python -m pip install --upgrade pip",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "detail": "Create .venv, then reload the window. Run this ONCE before the others."
+        },
+        {
+            // The everyday task. Runs the focused .py file with the venv
+            // Python. Set as default so your usual build shortcut runs it.
+            "label": "Run Python",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": ["${file}"],
+            "options": { "cwd": "${fileDirname}" },
+            "problemMatcher": [],
+            "group": { "kind": "build", "isDefault": true },
+            "detail": "Run the current .py file with the venv interpreter (cwd = its own folder)"
+        },
+        {
+            // Install the libraries Python Crash Course uses in its LATER
+            // chapters. Inside a venv, no --break-system-packages needed.
+            "label": "Install PCC packages (later chapters)",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/pip install matplotlib plotly pygame requests django",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "detail": "Install PCC libraries into the venv. Not needed until the project chapters."
+        },
+        {
+            // Save a record of exactly what is installed, so you (or a
+            // future machine, or an employer reading your GitHub) can
+            // rebuild the environment identically. This is the habit that
+            // matters for your cybersecurity / portfolio work.
+            "label": "Freeze requirements",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/pip freeze > requirements.txt",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "detail": "Write the current package list to requirements.txt"
+        },
+        {
+            // Rebuild a venv from a requirements.txt (e.g. on a new
+            // machine, or after deleting .venv). Run "Create venv" first.
+            "label": "Restore requirements",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/pip install -r requirements.txt",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "detail": "Reinstall everything listed in requirements.txt into the venv"
+        },
+        {
+            // Lint with Ruff: flags real problems (unused imports, likely
+            // bugs), not style. The closest thing to your C++ -Wall task.
+            // Install into the venv first: add `ruff` to the install task,
+            // or run  .venv/bin/pip install ruff
+            "label": "Lint (Ruff)",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python -m ruff check ${fileDirname}",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "detail": "Run the Ruff linter over the current file's folder"
+        }
+    ]
+}

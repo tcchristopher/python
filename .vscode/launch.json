@@ -1,0 +1,33 @@
+{
+    // ============================================================
+    // Debug configurations. The Python debugger is "debugpy", the
+    // role lldb played for your C++ targets. It automatically uses
+    // whichever interpreter settings.json selects, so once your venv
+    // is on, debugging uses the venv with no change needed here.
+    // "Current File" is the one you will use almost every time.
+    // ============================================================
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Debug whatever .py file is focused in the editor.
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "justMyCode": true
+        },
+        {
+            // Same, but steps INTO library code too. Useful later when
+            // you want to see how a package behaves under the hood.
+            "name": "Python: Current File (step into libraries)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "justMyCode": false
+        }
+    ]
+}

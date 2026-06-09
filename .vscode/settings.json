@@ -1,0 +1,51 @@
+{
+    // ============================================================
+    // Thabiso's Python workspace settings
+    // macOS · Apple Silicon · VENV-READY (no autoformatter)
+    //
+    // HOW TO TURN VENV ON (do this once, when you reach a chapter
+    // that says "pip install", e.g. the pygame project):
+    //   1. Open a terminal in this folder
+    //   2. Run:  python3 -m venv .venv
+    //   3. Reload the VS Code window (Cmd+Shift+P > "Reload Window")
+    // After that, the interpreter path below resolves to the venv and
+    // terminals auto-activate it. Until you do step 2, VS Code will
+    // just fall back to your system Python with no harm done.
+    // ============================================================
+
+    // Point at the project-local venv. ${workspaceFolder} keeps it
+    // portable. If .venv does not exist yet, VS Code falls back and
+    // you can pick any Python via "Python: Select Interpreter".
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+
+    // Auto-activate .venv in every terminal you open in this workspace,
+    // so `python` and `pip` already mean the venv's versions. This is
+    // the line that saves you from the #1 beginner trap (forgetting to
+    // activate). Harmless when no venv exists.
+    "python.terminal.activateEnvironment": true,
+
+    // Pylance is your IntelliSense engine (the role c_cpp_properties
+    // played for clang). "basic" is the right learning default.
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+
+    // Run/debug from the focused file's own folder, mirroring the
+    // "cwd" choice in your C++ tasks so relative paths behave the same.
+    "python.terminal.executeInFileDir": true,
+
+    // No autoformatter at this stage. Organize-imports on save still
+    // works through Pylance, which you do have, and is harmless.
+    "[python]": {
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+
+    // Keep cache and venv folders out of the file explorer noise.
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    }
+}
