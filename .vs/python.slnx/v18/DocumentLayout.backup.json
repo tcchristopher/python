@@ -18,7 +18,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "pythoncrashcourse\\chap1\\examples\\helloworld.py",
               "ToolTip": "C:\\Users\\camil\\OneDrive\\Documents\\dev_projects\\python\\pythoncrashcourse\\chap1\\examples\\helloworld.py",
               "RelativeToolTip": "pythoncrashcourse\\chap1\\examples\\helloworld.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-06-13T18:47:23.902Z",
               "EditorCaption": ""
